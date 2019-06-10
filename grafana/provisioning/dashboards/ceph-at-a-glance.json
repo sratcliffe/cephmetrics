@@ -47,7 +47,7 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": null,
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -2934,21 +2934,21 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "quantile(\n  5 / 100,\n    (irate(node_disk_read_time_ms[1m]) + irate(node_disk_write_time_ms[1m]) / \n    (irate(node_disk_reads_completed[1m]) + irate(node_disk_writes_completed[1m])) \n    +\n    ignoring(ceph_daemon,job) ceph_disk_occupation))",
+          "expr": "quantile(\n  0.95,\n    (irate(node_disk_read_time_ms[1m]) + irate(node_disk_write_time_ms[1m]) / \n    (irate(node_disk_reads_completed[1m]) + irate(node_disk_writes_completed[1m]))))",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
           "refId": "C"
         },
         {
-          "expr": "max(\n  irate(node_disk_read_time_ms[30s]) / irate(node_disk_reads_completed[30s])\n  +\n  irate(node_disk_write_time_ms[30s]) / irate(node_disk_writes_completed[30s])\n  + ignoring(ceph_daemon,job) ceph_disk_occupation\n)",
+          "expr": "max(\n  irate(node_disk_read_time_ms[30s]) / irate(node_disk_reads_completed[30s])\n  +\n  irate(node_disk_write_time_ms[30s]) / irate(node_disk_writes_completed[30s])\n)",
           "format": "time_series",
           "hide": true,
           "intervalFactor": 2,
           "refId": "B"
         },
         {
-          "expr": "sum(\n    (irate(node_disk_read_time_ms[1m]) + irate(node_disk_write_time_ms[1m]) / \n    (irate(node_disk_reads_completed[1m]) + irate(node_disk_writes_completed[1m])) \n    +\n    ignoring(ceph_daemon,job) ceph_disk_occupation)) / count(ceph_osd_up)",
+          "expr": "sum(\n    (irate(node_disk_read_time_ms[1m]) + irate(node_disk_write_time_ms[1m]) / \n    (irate(node_disk_reads_completed[1m]) + irate(node_disk_writes_completed[1m])))) / count(ceph_osd_up)",
           "format": "time_series",
           "hide": true,
           "intervalFactor": 1,

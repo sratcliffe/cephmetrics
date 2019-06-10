@@ -15,7 +15,7 @@
     {
       "type": "datasource",
       "id": "prometheus",
-      "name": "Local",
+      "name": null,
       "version": "5.0.0"
     },
     {
@@ -728,7 +728,7 @@
               "value": "current"
             }
           ],
-          "datasource": "Local",
+          "datasource": null,
           "description": "Filestore OSDs",
           "fontSize": "100%",
           "gridPos": {
@@ -805,7 +805,7 @@
         },
         {
           "columns": [],
-          "datasource": "Local",
+          "datasource": null,
           "description": "Apply latency covers the time taken to commit to the journal and complete the transaction",
           "fontSize": "100%",
           "gridPos": {
@@ -898,7 +898,7 @@
               "value": "current"
             }
           ],
-          "datasource": "Local",
+          "datasource": null,
           "description": "Commit latency is the time taken for writes to be flushed to disk as part of async kernel activity",
           "fontSize": "100%",
           "gridPos": {
@@ -992,7 +992,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Local",
+          "datasource": null,
           "description": "Shows the latency for a given OSD, allowing you to compare a specific OSD against the $percentile%ile graph. Note that when the \"OSD Id\" pull-down shows **ALL**, the graph will be empty to avoid the chart being unreadable.",
           "fill": 0,
           "gridPos": {
@@ -1096,7 +1096,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Local",
+          "datasource": null,
           "fill": 1,
           "gridPos": {
             "h": 8,
@@ -1224,7 +1224,7 @@
         },
         {
           "columns": [],
-          "datasource": "Local",
+          "datasource": null,
           "description": "Bluestore OSDs",
           "fontSize": "100%",
           "gridPos": {
@@ -1280,7 +1280,7 @@
         },
         {
           "columns": [],
-          "datasource": "Local",
+          "datasource": null,
           "description": "Time spent preparing the request (transaction)",
           "fontSize": "100%",
           "gridPos": {
@@ -1367,7 +1367,7 @@
         },
         {
           "columns": [],
-          "datasource": "Local",
+          "datasource": null,
           "description": "Time requests wait due to throttling or busy conditions",
           "fontSize": "100%",
           "gridPos": {
@@ -1454,7 +1454,7 @@
         },
         {
           "columns": [],
-          "datasource": "Local",
+          "datasource": null,
           "description": "Time spent waiting for the physical I/O request to complete",
           "fontSize": "100%",
           "gridPos": {
@@ -1541,7 +1541,7 @@
         },
         {
           "columns": [],
-          "datasource": "Local",
+          "datasource": null,
           "description": "Time spent waiting for rocksdb (metadata store) to commit meta data",
           "fontSize": "100%",
           "gridPos": {
@@ -1631,7 +1631,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Local",
+          "datasource": null,
           "fill": 1,
           "gridPos": {
             "h": 8,
@@ -1742,7 +1742,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "Local",
+          "datasource": null,
           "description": "This charts shows the $percentile%ile latencies across all OSDs, which indicates overall performance, but does not represent any specific OSD",
           "fill": 1,
           "gridPos": {

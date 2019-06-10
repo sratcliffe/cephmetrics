@@ -29,7 +29,7 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": null,
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -2176,7 +2176,7 @@
       "panels": [
         {
           "columns": [],
-          "datasource": "Local",
+          "datasource": null,
           "fontSize": "100%",
           "gridPos": {
             "h": 7,
