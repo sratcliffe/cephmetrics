@@ -1,0 +1,74 @@
+# my global config
+global:
+  scrape_interval:     15s # By default, scrape targets every 15 seconds.
+  evaluation_interval: 15s # By default, scrape targets every 15 seconds.
+  # scrape_timeout is set to the global default (10s).
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+      monitor: 'my-project'
+
+# Load and evaluate rules in this file every 'evaluation_interval' seconds.
+rule_files:
+  - 'alert.rules'
+  # - "first.rules"
+  # - "second.rules"
+
+# alert
+alerting:
+  alertmanagers:
+  - scheme: http
+    static_configs:
+    - targets:
+      - "alertmanager:9093"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+
+  - job_name: 'prometheus'
+
+    # Override the global default and scrape targets from this job every 5 seconds.
+    scrape_interval: 5s
+
+    static_configs:
+         - targets: ['localhost:9090']
+
+
+  - job_name: 'ceph'
+
+    # Override the global default and scrape targets from this job every 5 seconds.
+    scrape_interval: 15s
+
+    # CEPH provides instance labels for many of the data points, which we need
+    # to honour, otherwise they end up in exported_instance and are difficult to match
+    # to node_exporter values
+    honor_labels: true
+
+    static_configs:
+        - targets: ['127.0.0.1:9283']
+
+    relabel_configs:
+        - source_labels: [__address__]
+          regex: "(^[a-zA-Z0-9-]*).*"
+          target_label: instance
+
+  - job_name: 'dell_hw'
+    scrape_interval: 20s
+    static_configs:
+        - targets: ['127.0.0.1:9137']
+
+  - job_name: 'node-exporter'
+
+    # Override the global default and scrape targets from this job every 5 seconds.
+    scrape_interval: 5s
+
+    static_configs:
+            - targets: ['127.0.0.1:9100']
+
+    relabel_configs:
+        - source_labels: [__address__]
+          regex: "(^[a-zA-Z0-9-]*).*"
+          target_label: instance
