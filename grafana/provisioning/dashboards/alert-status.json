@@ -1004,7 +1004,7 @@
           {
             "evaluator": {
               "params": [
-                1000
+                0
               ],
               "type": "gt"
             },
@@ -1026,7 +1026,7 @@
           }
         ],
         "executionErrorState": "alerting",
-        "frequency": "30s",
+        "frequency": "60s",
         "handler": 1,
         "name": "Slow OSD responses alert",
         "noDataState": "ok",
