@@ -8,6 +8,8 @@ We assume that the deployment of node_exporter on all hosts and enabling the cep
 
 Mostly we just keep the excellent dashboards :)
 
+Currently we've only tested this version against a Luminous Ceph mgr prometheus end point.
+
 ## Configuration
 
 To get going you only really need to modify `prometheus/prometheus.yml` to configure the Ceph manager to scrape and the node exporter addresses for each physical host in your Ceph cluster.
