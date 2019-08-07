@@ -10,7 +10,7 @@ Mostly we just keep the excellent dashboards :)
 
 ## Configuration
 
-To get going you only really need to modify `prometheus/prometheus.yml` to configure the CEPH manager to scrape and the node exporter addresses for each physical host in your CEPH cluster.
+To get going you only really need to modify `prometheus/prometheus.yml` to configure the Ceph manager to scrape and the node exporter addresses for each physical host in your Ceph cluster.
 
 The example config file just uses *localhost* in the various `targets` sections.
 
