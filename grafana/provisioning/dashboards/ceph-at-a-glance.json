@@ -2489,7 +2489,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "quantile(\n  $percentile/100, \n  (\n    node_memory_MemTotal{job='node'} - node_memory_MemFree{job='node'} - node_memory_Buffers{job='node'} - node_memory_Cached{job='node'}\n  ) / node_memory_MemTotal{job='node'} * 100\n)",
+          "expr": "quantile(\n  $percentile/100, \n  (\n    node_memory_MemTotal{job='node-exporter'} - node_memory_MemFree{job='node-exporter'} - node_memory_Buffers{job='node-exporter'} - node_memory_Cached{job='node-exporter'}\n  ) / node_memory_MemTotal{job='node-exporter'} * 100\n)",
           "format": "time_series",
           "groupBy": [],
           "hide": false,
@@ -2599,7 +2599,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(\n  sum(\n    rate(\n      node_disk_reads_completed[$__interval]\n    )\n  ) by (instance,device)\n   + ignoring(ceph_daemon,job) group_right(instance) ceph_disk_occupation\n)\n+\nsum(\n  sum(\n    rate(\n      node_disk_writes_completed[$__interval]\n    )\n  ) by (instance,device)\n   + ignoring(ceph_daemon,job) group_right(instance) ceph_disk_occupation\n)",
+          "expr": "sum(\n  sum(\n    rate(\n      node_disk_reads_completed[$__interval]\n    )\n  ) by (instance,device)\n   + ignoring(ceph_daemon,job,db_device,wal_device) group_right(instance) ceph_disk_occupation\n)\n+\nsum(\n  sum(\n    rate(\n      node_disk_writes_completed[$__interval]\n    )\n  ) by (instance,device)\n   + ignoring(ceph_daemon,job,db_device,wal_device) group_right(instance) ceph_disk_occupation\n)",
           "format": "time_series",
           "groupBy": [],
           "hide": false,
@@ -2708,7 +2708,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "# should only include OSD hosts\nsum(\n  sum(\n    rate(\n      node_disk_bytes_read[$__interval]\n    )\n  ) by (instance,device)\n  + ignoring(ceph_daemon,job) group_right(instance) ceph_disk_occupation\n)\n+\nsum(\n  sum(\n    rate(\n      node_disk_bytes_written[$__interval]\n    )\n  ) by (instance,device)\n  + ignoring(ceph_daemon,job) group_right(instance) ceph_disk_occupation\n)",
+          "expr": "# should only include OSD hosts\nsum(\n  sum(\n    rate(\n      node_disk_bytes_read[$__interval]\n    )\n  ) by (instance,device)\n  + ignoring(ceph_daemon,job,db_device,wal_device) group_right(instance) ceph_disk_occupation\n)\n+\nsum(\n  sum(\n    rate(\n      node_disk_bytes_written[$__interval]\n    )\n  ) by (instance,device)\n  + ignoring(ceph_daemon,job,db_device,wal_device) group_right(instance) ceph_disk_occupation\n)",
           "format": "time_series",
           "groupBy": [],
           "hide": false,
